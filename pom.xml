@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cc.stacks</groupId>
     <artifactId>DevKit</artifactId>
-    <version>Build.1</version>
+    <version>Bulid.1</version>
 
     <dependencies>
         <dependency>
