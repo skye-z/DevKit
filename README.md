@@ -15,8 +15,8 @@
 </repositories>
 
 <dependency>
-    <groupId>cc.stacks.repo</groupId>
-    <artifactId>DevKit</artifactId>
+    <groupId>cc.stacks</groupId>
+    <artifactId>devkit</artifactId>
     <version>Bulid.1</version>
 </dependency>
 ```
