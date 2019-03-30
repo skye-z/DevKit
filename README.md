@@ -16,7 +16,7 @@
 
 <dependency>
     <groupId>cc.stacks.repo</groupId>
-    <artifactId>dev-kit</artifactId>
+    <artifactId>DevKit</artifactId>
     <version>Bulid.1</version>
 </dependency>
 ```
