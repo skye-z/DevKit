@@ -5,13 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cc.stacks</groupId>
     <artifactId>devkit</artifactId>
-    <version>Bulid.1</version>
+    <version>Build.1</version>
 
     <dependencies>
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
         </dependency>
     </dependencies>
 

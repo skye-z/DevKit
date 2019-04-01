@@ -17,7 +17,7 @@
 <dependency>
     <groupId>cc.stacks</groupId>
     <artifactId>devkit</artifactId>
-    <version>Bulid.1</version>
+    <version>Build.1</version>
 </dependency>
 ```
 
@@ -39,7 +39,17 @@
     * [密钥生成器](#密钥生成器)
     * [对称算法加密](#对称算法加密)
     * [对称算法解密](#对称算法解密)
-2. [日志工具](#日志工具)
+2. [日志构建工具](#日志构建工具)
+3. [SQL参数构建工具](#sql参数构建工具)
+3. [响应构建工具](#响应构建工具)
+    * [简易成功响应](#简易成功响应)
+    * [简易失败响应](#简易失败响应)
+    * [含消息的成功响应](#含消息的成功响应)
+    * [含消息的失败响应](#含消息的失败响应)
+    * [含数据的成功响应](#含数据的成功响应)
+    * [含数据的失败响应](#含数据的失败响应)
+    * [含消息和数据的成功响应](#含消息和数据的成功响应)
+    * [含消息和数据的失败响应](#含消息和数据的失败响应)
 
 ### 安全工具
 
@@ -47,19 +57,19 @@ Class: Security
 
 #### 字符串转16进制
 
-stringToHex(String Text)
+static stringToHex(String Text)
 
 参数: Text(转换字符)
 
 #### 16进制转字符串
 
-hexToString(String Hex)
+static hexToString(String Hex)
 
 参数: Text(转换字符)
 
 #### MD 摘要
 
-MDDigest(boolean Reduction, String Text)
+static MDDigest(boolean Reduction, String Text)
 
 参数: Reduction(是否降级), Text(摘要字符)
 
@@ -67,7 +77,7 @@ MDDigest(boolean Reduction, String Text)
 
 #### SHA 摘要
 
-SHADigest(int Level, String Text)
+static SHADigest(int Level, String Text)
 
 参数: Level(算法级别), Text(摘要字符)
 
@@ -83,19 +93,19 @@ SHADigest(int Level, String Text)
 
 #### Unicode 编码
 
-UnicodeEncode(String Text)
+static UnicodeEncode(String Text)
 
 参数: Text(编码字符)
 
 #### Unicode 解码
 
-UnicodeDecode(String Code)
+static UnicodeDecode(String Code)
 
 参数: Code(解码字符)
 
 #### URLCode 编码
 
-URLCodeEncode(String Text)
+static URLCodeEncode(String Text)
 
 参数: Text(编码字符)
 
@@ -107,31 +117,31 @@ URLCodeDecode(String Code)
 
 #### Base32 编码
 
-Base32Encode(String Text)
+static Base32Encode(String Text)
 
 参数: Text(编码字符)
 
 #### Base32 解码
 
-Base32Decode(String Code)
+static Base32Decode(String Code)
 
 参数: Code(解码字符)
 
 #### Base64 编码
 
-Base64Encode(String Text)
+static Base64Encode(String Text)
 
 参数: Text(编码字符)
 
 #### Base64 解码
 
-Base64Decode(String Code)
+static Base64Decode(String Code)
 
 参数: Code(解码字符)
 
 #### 密钥生成器
 
-KeyGenerator(String Type, int Long)
+static KeyGenerator(String Type, int Long)
 
 参数: Type(密钥类型), Long(密钥长度)
 
@@ -139,7 +149,7 @@ KeyGenerator(String Type, int Long)
 
 #### 对称算法加密
 
-SymmetricEncode(String Type, String Message, String Key)
+static SymmetricEncode(String Type, String Message, String Key)
 
 参数: Type(密钥类型), Message(加密内容), Key(密钥)
 
@@ -147,8 +157,84 @@ SymmetricEncode(String Type, String Message, String Key)
 
 #### 对称算法解密
 
-SymmetricDecode(String Type, String Message, String Key)
+static SymmetricDecode(String Type, String Message, String Key)
 
 参数: Type(密钥类型), Message(解密内容), Key(密钥)
 
 > 类型支持: AES, DES
+
+### 日志构建工具
+
+#### 输出
+
+static Output(int Level, int Code, String Message)
+
+参数: Level(日志级别),Code(日志代码),Message(日志内容)
+
+> 日志级别: 调试(1)、信息(2)、警告(3)和错误(4)
+
+### SQL参数构建工具
+
+#### 构建
+
+static Build(Map<String, String> Parameters, List<String> Connect)
+
+参数: Parameters(参数集合),Connect(连接符集合)
+
+> 参数集合使用Map构建, Key为参数名称, Value为参数值
+> 
+> 连接符集合可以使用默认构建方法, 也可以自己用List构建
+
+#### 生成And连接符
+
+static AndConnect()
+
+#### 生成Or连接符
+
+static AndConnect()
+
+### 响应构建工具
+
+#### 简易成功响应
+
+static Success()
+
+#### 简易失败响应
+
+static Failure()
+
+#### 含消息的成功响应
+
+static Success(String Message)
+
+参数: Message(响应信息)
+
+#### 含消息的失败响应
+
+static Failure(String Message)
+
+参数: Message(响应信息)
+
+#### 含数据的成功响应
+
+static Success(T Data)
+
+参数: Data(响应数据)
+
+#### 含数据的失败响应
+
+static Failure(T Data)
+
+参数: Data(响应数据)
+
+#### 含消息和数据的成功响应
+
+static Success(String Message,T Data)
+
+参数: Message(响应信息),Data(响应数据)
+
+#### 含消息和数据的失败响应
+
+static Failure(String Message,T Data)
+
+参数: Message(响应信息),Data(响应数据)

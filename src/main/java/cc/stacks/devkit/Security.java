@@ -17,7 +17,7 @@ import javax.crypto.spec.SecretKeySpec;
  * 安全工具
  *
  * @author sKai-Zhang <skai-zhang@hotmail.com>
- * @copyright CopyRight 2015-2018 sKai-Zhang All Rights Reserved.
+ * @copyright CopyRight 2015-2019 sKai-Zhang All Rights Reserved.
  * @license GPL
  */
 @SuppressWarnings("all")
