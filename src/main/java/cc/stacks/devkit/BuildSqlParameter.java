@@ -11,6 +11,7 @@ import java.util.Map;
  * @copyright CopyRight 2015-2019 sKai-Zhang All Rights Reserved.
  * @license GPL
  */
+@SuppressWarnings("all")
 public class BuildSqlParameter {
 
     // And连接符
