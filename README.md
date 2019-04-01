@@ -6,7 +6,7 @@
 
 ## 使用方法
 
-```xml
+``` xml
 <repositories>
     <repository>
         <id>stacks-dev-kit</id>
@@ -24,6 +24,21 @@
 ## 工具列表
 
 1. [安全工具](#安全工具)
+    * [字符串转16进制](#字符串转16进制)
+    * [16进制转字符串](#16进制转字符串)
+    * [MD 摘要](#md-摘要)
+    * [SHA 摘要](#sha-摘要)
+    * [Unicode 编码](#unicode-编码)
+    * [Unicode 解码](#unicode-解码)
+    * [URLCode 编码](#urlcode-编码)
+    * [URLCode 解码](#urlcode-解码)
+    * [Base32 编码](#base32-编码)
+    * [Base32 解码](#base32-解码)
+    * [Base64 编码](#base64-编码)
+    * [Base64 解码](#base64-解码)
+    * [密钥生成器](#密钥生成器)
+    * [对称算法加密](#对称算法加密)
+    * [对称算法解密](#对称算法解密)
 2. [日志工具](#日志工具)
 
 ### 安全工具
@@ -128,8 +143,12 @@ SymmetricEncode(String Type, String Message, String Key)
 
 参数: Type(密钥类型), Message(加密内容), Key(密钥)
 
+> 类型支持: AES, DES
+
 #### 对称算法解密
 
 SymmetricDecode(String Type, String Message, String Key)
 
 参数: Type(密钥类型), Message(解密内容), Key(密钥)
+
+> 类型支持: AES, DES
