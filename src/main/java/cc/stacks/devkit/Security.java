@@ -121,8 +121,8 @@ public class Security {
     }
 
     // Base32 解码
-    public static String Base32Decode(String Text) {
-        byte[] DecodeBytes = base32.decode(Text.getBytes());
+    public static String Base32Decode(String Code) {
+        byte[] DecodeBytes = base32.decode(Code.getBytes());
         return new String(DecodeBytes);
     }
 
@@ -133,8 +133,8 @@ public class Security {
     }
 
     // Base64 解码
-    public static String Base64Decode(String Text) {
-        byte[] DecodeBytes = Base64.getDecoder().decode(Text.getBytes());
+    public static String Base64Decode(String Code) {
+        byte[] DecodeBytes = Base64.getDecoder().decode(Code.getBytes());
         return new String(DecodeBytes);
     }
 
