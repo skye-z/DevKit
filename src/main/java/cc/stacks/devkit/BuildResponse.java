@@ -4,10 +4,6 @@ import java.io.Serializable;
 
 /**
  * 响应构建工具
- *
- * @author sKai-Zhang <skai-zhang@hotmail.com>
- * @copyright CopyRight 2015-2019 sKai-Zhang All Rights Reserved.
- * @license GPL
  */
 @SuppressWarnings("all")
 public class BuildResponse<T> implements Serializable {

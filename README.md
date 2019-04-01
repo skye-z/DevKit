@@ -6,6 +6,18 @@
 
 ## 使用方法
 
+本项目已同步Maven中央仓库, 在pom文件中加入下方代码即可
+
+``` xml
+<dependency>
+  <groupId>cc.stacks</groupId>
+  <artifactId>devkit</artifactId>
+  <version>1.0.0-RELEASE</version>
+</dependency>
+```
+
+若加入后无法下载, 请先确认是否使用的是Maven中央仓库, 若非, 请额外加入下方代码
+
 ``` xml
 <repositories>
     <repository>
@@ -13,12 +25,6 @@
         <url>https://raw.github.com/skai-zhang/DevKit/mvn-repo</url>
     </repository>
 </repositories>
-
-<dependency>
-    <groupId>cc.stacks</groupId>
-    <artifactId>devkit</artifactId>
-    <version>Build.1</version>
-</dependency>
 ```
 
 ## 工具列表
