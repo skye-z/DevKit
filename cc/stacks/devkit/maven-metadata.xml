@@ -3,10 +3,10 @@
   <groupId>cc.stacks</groupId>
   <artifactId>devkit</artifactId>
   <versioning>
-    <release>Bulid.1</release>
+    <release>1.0.0-RELEASE</release>
     <versions>
-      <version>Bulid.1</version>
+      <version>1.0.0-RELEASE</version>
     </versions>
-    <lastUpdated>20190330091514</lastUpdated>
+    <lastUpdated>20190401085511</lastUpdated>
   </versioning>
 </metadata>
