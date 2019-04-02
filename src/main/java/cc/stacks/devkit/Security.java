@@ -1,22 +1,20 @@
 package cc.stacks.devkit;
 
+import java.security.SecureRandom;
 import java.util.Base64;
+
 import org.apache.commons.codec.binary.Base32;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.codec.net.URLCodec;
 
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
+import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
  * 安全工具
  */
-@SuppressWarnings("all")
 public class Security {
 
     private static Base32 base32 = new Base32();
@@ -94,18 +92,18 @@ public class Security {
 
     // URLCode 编码
     public static String URLCodeEncode(String Text) {
-       try {
-           return urlCodec.encode(Text);
-       }catch (Exception e){
-           return null;
-       }
+        try {
+            return urlCodec.encode(Text);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     // URLCode 解码
     public static String URLCodeDecode(String Code) {
         try {
             return urlCodec.decode(Code);
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
@@ -135,7 +133,7 @@ public class Security {
     }
 
     // 密钥生成器
-    public static String KeyGenerator(String Type, int Long) {
+    public static String SymmetricKeyGenerator(String Type, int Long) {
         try {
             // 创建密钥生成器对象
             KeyGenerator keyGenerator = KeyGenerator.getInstance(Type);
@@ -200,6 +198,80 @@ public class Security {
         }
     }
 
+    // TOTP密钥生成器
+    public static String TOTPKeyGenerator() {
+        try {
+            SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
+            secureRandom.setSeed(Base64Decode("g8GjEvTbW5oVSV7avLBdwIHqGlUYNzKFI7izOF8GwLDVKs2m0QN7vxRs2im5MDaNCWGmcD2rvcZx").getBytes());
+            byte[] buffer = secureRandom.generateSeed(10);
+            Base32 codec = new Base32();
+            return new String(codec.encode(buffer));
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    // TOTP代码验证
+    public static boolean TOTPVerification(String Code, String Key, int Offset) {
+        Base32 codec = new Base32();
+        byte[] decodedKey = codec.decode(Key);
+        long Time = (System.currentTimeMillis() / 1000L) / 30L;
+        for (int i = -1; i <= Offset; ++i) {
+            String hash;
+            try {
+                hash = TOTPCalculation(decodedKey, Time + i);
+            } catch (Exception e) {
+                return false;
+            }
+            if (hash.equals(Code))
+                return true;
+        }
+        return false;
+    }
+
+    // TOTP获取代码
+    public static String TOTPCodeGenerator(String Key) {
+        try {
+            Base32 codec = new Base32();
+            byte[] decodedKey = codec.decode(Key);
+            long Time = (System.currentTimeMillis() / 1000L) / 30L;
+            return TOTPCalculation(decodedKey, Time);
+        } catch (Exception e) {
+            return "000000";
+        }
+    }
+
+    // TOTP代码计算
+    private static String TOTPCalculation(byte[] Key, long Time) {
+        try {
+            byte[] data = new byte[8];
+            long value = Time;
+            for (int i = 8; i-- > 0; value >>>= 8)
+                data[i] = (byte) value;
+            SecretKeySpec signKey = new SecretKeySpec(Key, "HmacSHA1");
+            Mac mac = Mac.getInstance("HmacSHA1");
+            mac.init(signKey);
+            byte[] hash = mac.doFinal(data);
+            int offset = hash[20 - 1] & 0xF;
+            long LongCode = 0;
+            for (int i = 0; i < 4; ++i) {
+                LongCode <<= 8;
+                LongCode |= (hash[offset + i] & 0xFF);
+            }
+            LongCode &= 0x7FFFFFFF;
+            LongCode %= 1000000;
+            String Code = String.valueOf(LongCode);
+            if (Code.length() >= 6)
+                return Code;
+            StringBuffer CodeBuffer = new StringBuffer(Code);
+            for (int i = 0; i < 6 - Code.length(); i++)
+                CodeBuffer.insert(0, "0");
+            return CodeBuffer.toString();
+        } catch (Exception e) {
+            return "000000";
+        }
+    }
+
 //    public static void main(String[] args) {
 //        System.out.println("==================== 转换 ====================");
 //        System.out.println("Hex:");
@@ -241,17 +313,25 @@ public class Security {
 //
 //        System.out.println("\n\n=================== 加密 ====================");
 //        System.out.println("\nDES:");
-//        String DESKey = KeyGenerator("DES", 56);
+//        String DESKey = SymmetricKeyGenerator("DES", 56);
 //        String DESTest = SymmetricEncode("DES", "测试", DESKey);
 //        System.out.println("密钥: " + DESKey);
 //        System.out.println("加密: " + DESTest);
 //        System.out.println("解密: " + SymmetricDecode("DES", DESTest, DESKey));
 //
 //        System.out.println("\nAES:");
-//        String AESKey = KeyGenerator("AES", 128);
+//        String AESKey = SymmetricKeyGenerator("AES", 128);
 //        String AESTest = SymmetricEncode("AES", "测试", AESKey);
 //        System.out.println("密钥: " + AESKey);
 //        System.out.println("加密: " + AESTest);
 //        System.out.println("解密: " + SymmetricDecode("AES", AESTest, AESKey));
+//
+//        System.out.println("\nTOTP:");
+//        String TOTPKey = TOTPKeyGenerator();
+//        String TOTPCode = TOTPCodeGenerator(TOTPKey);
+//        System.out.println("密钥: " + TOTPKey);
+//        System.out.println("口令: " + TOTPCode);
+//        System.out.println("验证: " + TOTPVerification(TOTPCode,TOTPKey,1));
 //    }
+
 }
