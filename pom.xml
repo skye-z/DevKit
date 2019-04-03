@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cc.stacks</groupId>
     <artifactId>devkit</artifactId>
-    <version>1.0.1-RELEASE</version>
+    <version>1.0.2-RELEASE</version>
     <description>This is a Self-encapsulated open toolkit for speeding up development and providing tools such as
         security, response, logging and identity tokens.
     </description>

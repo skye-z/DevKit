@@ -2,9 +2,6 @@ package cc.stacks.devkit;
 
 import com.google.gson.Gson;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 身份令牌工具
  */
