@@ -12,7 +12,7 @@
 <dependency>
   <groupId>cc.stacks</groupId>
   <artifactId>devkit</artifactId>
-  <version>1.0.0-RELEASE</version>
+  <version>1.0.3-RELEASE</version>
 </dependency>
 ```
 
@@ -29,4 +29,4 @@
 
 ## 更多
 
-更多内容请点击上方的`wiki`
+[更多内容请点此](https://github.com/skai-zhang/DevKit/wiki)

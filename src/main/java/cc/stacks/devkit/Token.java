@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 /**
  * 身份令牌工具
  */
+@SuppressWarnings("all")
 public class Token<T> {
 
     // 内嵌数据
