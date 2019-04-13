@@ -1,6 +1,6 @@
 # Stacks Dev Kit v2
 
-[![](https://img.shields.io/badge/version-1.0.2--RELEASE-brightgreen.svg)](https://github.com/skai-zhang/DevKit/commits/master) [![](https://img.shields.io/badge/maven-central-yellow.svg)](https://mvnrepository.com/artifact/cc.stacks/devkit) [![](https://img.shields.io/badge/license-GLPv3-red.svg)](https://github.com/skai-zhang/DevKit/blob/master/LICENSE)
+[![](https://img.shields.io/badge/version-1.0.3--RELEASE-brightgreen.svg)](https://github.com/skai-zhang/DevKit/commits/master) [![](https://img.shields.io/badge/maven-central-yellow.svg)](https://mvnrepository.com/artifact/cc.stacks/devkit) [![](https://img.shields.io/badge/license-GLPv3-red.svg)](https://github.com/skai-zhang/DevKit/blob/master/LICENSE)
 
 项目包名: cc.stacks.devkit
 

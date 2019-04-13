@@ -15,6 +15,7 @@ import javax.crypto.spec.SecretKeySpec;
 /**
  * 安全工具
  */
+@SuppressWarnings("all")
 public class Security {
 
     private static Base32 base32 = new Base32();

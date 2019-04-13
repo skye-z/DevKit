@@ -9,43 +9,37 @@ import org.slf4j.LoggerFactory;
 @SuppressWarnings("all")
 public class BuildLogs {
 
-    // 调试
-    public static int DEBUG = 1;
+    // 输出普通信息日志
+    public static void Info(int Code, String Message, Class ClassObject) {
+        if (Code == 0)
+            Out("info", Message, ClassObject);
+        else
+            Out("info", "[" + Code + "] --- " + Message, ClassObject);
+    }
 
-    // 信息
-    public static int INFO = 2;
+    // 输出警告日志
+    public static void Warn(int Code, String Message, Class ClassObject) {
+        Out("warn", "[" + Code + "] --- " + Message, ClassObject);
+    }
 
-    // 警告
-    public static int WARN = 3;
+    // 输出错误日志
+    public static void Error(int Code, String Message, Class ClassObject) {
+        Out("error", "[" + Code + "] --- " + Message, ClassObject);
+    }
 
-    // 错误
-    public static int ERROR = 4;
-
-    // 日志垫片对象
-    private static Logger Log = LoggerFactory.getLogger("System");
-
-    // 日志文本格式
-    private static String LogText = "{} > {}";
-
-    // 输出日志
-    public static void Output(int Level, int Code, String Message) {
-        switch (Level) {
-            case 1:
-                Log.debug(LogText, Code, Message);
+    // 日志输出
+    private static void Out(String Type, String Message, Class ClassObject) {
+        Logger LogOut = LoggerFactory.getLogger(ClassObject);
+        switch (Type) {
+            case "info":
+                LogOut.info(Message);
                 break;
-            case 2:
-                Log.info(LogText, Code, Message);
+            case "warn":
+                LogOut.warn(Message);
                 break;
-            case 3:
-                Log.warn(LogText, Code, Message);
-                break;
-            case 4:
-                Log.error(LogText, Code, Message);
-                break;
-            default:
-                Log.info(LogText, Code, Message);
+            case "error":
+                LogOut.error(Message);
                 break;
         }
     }
-
 }

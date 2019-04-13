@@ -1,6 +1,7 @@
 package cc.stacks.devkit;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -53,6 +54,13 @@ public class BuildSqlParameter {
         }
         // 返回SQL参数
         return Screen.toString().substring(0, Screen.length() - 4).trim();
+    }
+
+    public static void main(String[] args) {
+        Map<String, String> Parameters = new HashMap<>();
+        Parameters.put("Id","1");
+        Parameters.put("Name","测试");
+        System.out.println("测试SQL构建: "+BuildSqlParameter.Build(Parameters,BuildSqlParameter.AndConnect()));
     }
 
 }
