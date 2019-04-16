@@ -14,7 +14,7 @@
 <dependency>
   <groupId>cc.stacks</groupId>
   <artifactId>devkit</artifactId>
-  <version>1.0.3-RELEASE</version>
+  <version>1.0.5-RELEASE</version>
 </dependency>
 ```
 

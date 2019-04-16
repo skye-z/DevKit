@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class Requests {
 
-    public String Get(String Url) {
+    public static String Get(String Url) {
         // 创建Http请求客户端对象
         OkHttpClient Client = new OkHttpClient();
         // 创建请求对象
@@ -24,7 +24,7 @@ public class Requests {
         }
     }
 
-    public String Get(String Url, String Referer) {
+    public static String Get(String Url, String Referer) {
         // 创建Http请求客户端对象
         OkHttpClient Client = new OkHttpClient();
         // 创建请求对象
@@ -36,7 +36,7 @@ public class Requests {
         }
     }
 
-    public String Post(String Url, String Type) {
+    public static String Post(String Url, String Type) {
         // 创建OkHttp请求客户端对象
         OkHttpClient Client = new OkHttpClient();
         // 创建媒体类型对象
@@ -52,7 +52,7 @@ public class Requests {
         }
     }
 
-    public String Post(String Url, String Type, String Content) {
+    public static String Post(String Url, String Type, String Content) {
         // 创建OkHttp请求客户端对象
         OkHttpClient Client = new OkHttpClient();
         // 创建媒体类型对象
