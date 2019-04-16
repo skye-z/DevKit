@@ -3,10 +3,10 @@
   <groupId>cc.stacks</groupId>
   <artifactId>devkit</artifactId>
   <versioning>
-    <release>1.0.4-RELEASE</release>
+    <release>1.0.5-RELEASE</release>
     <versions>
-      <version>1.0.4-RELEASE</version>
+      <version>1.0.5-RELEASE</version>
     </versions>
-    <lastUpdated>20190415014047</lastUpdated>
+    <lastUpdated>20190416023620</lastUpdated>
   </versioning>
 </metadata>
